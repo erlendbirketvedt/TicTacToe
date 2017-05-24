@@ -11,23 +11,33 @@ public class PlayerActivity extends AppCompatActivity {
 
     private EditText p1field, p2field;
 
-    private static final String PLAYER_ONE_NAME =
+    private Button btnScore;
+
+    public static final String PLAYER_ONE_NAME =
             "no.hulitax.geoquiz.player_one_name";
 
-    private static final String PLAYER_TWO_NAME =
+    public static final String PLAYER_TWO_NAME =
             "no.hulitax.geoquiz.player_two_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Intent intent1 = new Intent(this, ScoreActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playerscreen);
         p1field = (EditText) findViewById(R.id.p1input);
         p2field = (EditText) findViewById(R.id.p2input);
         Button button = (Button) findViewById(R.id.start_game);
+        btnScore = (Button) findViewById(R.id.history);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeActivity();
+            }
+        });
+        btnScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent1);
             }
         });
     }
