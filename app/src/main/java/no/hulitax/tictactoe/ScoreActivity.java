@@ -10,6 +10,11 @@ public class ScoreActivity extends AppCompatActivity {
 
     private ListView scoreScreen;
 
+    /* Using an ArrayList in a ListView we (hopefully) will be
+     * able to display a list of games previously played and
+     * who won them.
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<User> testUser = new ArrayList<>();

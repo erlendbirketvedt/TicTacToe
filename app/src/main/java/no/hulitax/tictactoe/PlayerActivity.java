@@ -13,11 +13,15 @@ public class PlayerActivity extends AppCompatActivity {
 
     private Button btnScore;
 
+    // These are the strings that will identify player names in the intent.
+
     public static final String PLAYER_ONE_NAME =
             "no.hulitax.geoquiz.player_one_name";
 
     public static final String PLAYER_TWO_NAME =
             "no.hulitax.geoquiz.player_two_name";
+
+    // This intent takes us to the score screen.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
     }
+
+    // This intent starts a new game.
 
     private void changeActivity() {
         Intent intent = new Intent(this, MainActivity.class);

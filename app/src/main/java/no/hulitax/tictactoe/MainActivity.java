@@ -16,11 +16,15 @@ public class MainActivity extends AppCompatActivity {
 
     String p1name, p2name;
 
+    // Let's map up buttons and change their state depending on which player clicks it.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Get player names from PlayerActivity intent
+
         p1name = getIntent().getStringExtra(PlayerActivity.PLAYER_ONE_NAME);
         p2name = getIntent().getStringExtra(PlayerActivity.PLAYER_TWO_NAME);
 
@@ -35,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         b9 = (Button) findViewById(R.id.b9);
 
         turn = 1;
+
+        /* Add a listener to the buttons that make up the game board
+         * If player one clicks the button make it an 'X', else make it an 'O'
+         * Finally check board state to see if conditions are met for declaring a winner.
+         */
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,9 +191,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // This method checks board state to see if a player has met the conditions for a win.
+
     public void endGame() {
         String a, b, c, d, e, f, g, h, i;
         boolean end = false;
+
+        // The board with added spaces to mentally visualize lay-out
 
         a = b1.getText().toString();
         b = b2.getText().toString();
@@ -198,8 +211,12 @@ public class MainActivity extends AppCompatActivity {
         h = b8.getText().toString();
         i = b9.getText().toString();
 
+        // We need to output something if win conditions are met
+
         String toastWinP1 = getString(R.string.won_the_game, p1name);
         String toastWinP2 = getString(R.string.won_the_game, p2name);
+
+        // Check all rows and diagonals for three in a row
 
         if (a.equals("X") && b.equals("X") && c.equals("X") || a.equals("X") && e.equals("X") && i.equals("X")
                 || a.equals("X") && d.equals("X") && g.equals("X") || b.equals("X") && e.equals("X") && h.equals("X")
@@ -216,6 +233,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, toastWinP2, Toast.LENGTH_LONG).show();
             end = true;
         }
+
+        // When we have a winner, the board can be disabled. 
 
         if(end) {
             b1.setEnabled(false);

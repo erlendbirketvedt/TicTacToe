@@ -4,6 +4,8 @@ package no.hulitax.tictactoe;
  * Created by erlend on 24.05.17.
  */
 
+    // A helper class for populating the score screen.
+
 public class User {
     private String name;
     private String score;
