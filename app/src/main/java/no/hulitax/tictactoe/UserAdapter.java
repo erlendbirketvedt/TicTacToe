@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * Created by erlend on 24.05.17.
  */
 
+    // Helper class for the score screen
+
 public class UserAdapter extends ArrayAdapter<User> {
     public UserAdapter(Context context, ArrayList<User> users) {
         super(context, 0, users);
